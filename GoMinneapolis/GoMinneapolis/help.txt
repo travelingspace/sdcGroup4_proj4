@@ -5,3 +5,7 @@
     - activate venv - use forward slashes [venv/Scripts/activate.bat]
     - cd into GoMinneapolis
     - run command: python manage.py runserver
+
+Admin credentials:
+UN: group4
+PW: itecmctc19
