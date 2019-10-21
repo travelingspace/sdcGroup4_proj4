@@ -2,6 +2,11 @@ from django.db import models
 
 # Create your models here.
 class FireReport(models.Model):
+
+    ''' 
+            311 API url - https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Fires_Reported_2019_YTD/FeatureServer/0/query?where=1%3D1&outFields=inci_no,descript,alm_date,alm_time,number,street,st_type,st_suffix,addr_2,apt_room,latitude,longitude,inci_type,clr_date,clr_time,alarms,complete,StartDate,EndDate,OBJECTID&outSR=4326&f=json
+    '''
+
     inci_no = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
     alm_date = models.DateField()
