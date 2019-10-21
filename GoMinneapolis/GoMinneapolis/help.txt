@@ -1,0 +1,5 @@
+********Reminders/hints for our project - feel free to add anything here******
+
+-To run project:
+    -navigate into project root directory [cd [C:\User\Me\...]\sdcgroup4_proj4]
+    -activate venv [venv/]
