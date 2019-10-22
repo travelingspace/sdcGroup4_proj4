@@ -1,0 +1,14 @@
+<h1>GoMinneapolis!</h1>
+<p>Software Development Capstone - Group 4 - Project 4</p>
+
+<h3>The 311</h3>
+<p>Fire Incident Reports</p>
+
+<ul>
+    {% for incident in fire_incidents %}
+    <li>
+        {{incident.inci_no}}
+    </li>
+    {% endfor %}
+</ul>
+

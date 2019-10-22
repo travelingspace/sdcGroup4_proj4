@@ -2,7 +2,7 @@
 
 -To run project:
     - navigate into project root directory [cd [C:\User\Me\...]\sdcgroup4_proj4]
-    - activate venv - use forward slashes [venv/Scripts/activate.bat]
+    - activate venv - use back slashes [venv\Scripts\activate.bat]
     - cd into GoMinneapolis
     - run command: python manage.py runserver
 
