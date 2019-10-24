@@ -1,4 +1,5 @@
 from django.db import models
+import requests
 
 # Create your models here.
 class FireReport(models.Model):
@@ -19,3 +20,10 @@ class FireReport(models.Model):
 
     def _str_(self):
         return f'{self.inci_no}, on {self.alm_date} at {self.alm_time} was reported at location address {self.building_num}, {self.street_num}. It was of incident type {self.incident_type}.'
+
+    '''def GetIncident():
+        allIncidents = requests.get('https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Fires_Reported_2019_YTD/FeatureServer/0/query?where=1%3D1&outFields=inci_no,descript,alm_date,alm_time,number,street,st_type,st_suffix,addr_2,apt_room,latitude,longitude,inci_type,clr_date,clr_time,alarms,complete,StartDate,EndDate,OBJECTID&outSR=4326&f=json')
+        incident = allIncidents[0].json()
+        print(allIncidents.json())
+        return allIncidents.json()'''
+            

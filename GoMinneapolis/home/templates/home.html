@@ -1,14 +1,68 @@
-<h1>GoMinneapolis!</h1>
+<style>
+body{
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<body>
+    <button style="float:right">View Zipcodes Visited</button>
+    <br>
+    <h1>GoMinneapolis!</h1>
 <p>Software Development Capstone - Group 4 - Project 4</p>
 
-<h3>The 311</h3>
-<p>Fire Incident Reports</p>
+<p>
+    <h4>Select a zipcode:</h4>
+</p>
 
-<ul>
-    {% for incident in fire_incidents %}
-    <li>
-        {{incident.inci_no}}
-    </li>
-    {% endfor %}
-</ul>
+<select id="zipCode" style="font-size: 2em;" class="form-control">
+    <option value="0">CHOOSE ZIP</option>
+    <option value="55430">55430</option>
+    <option value="55412">55412</option>
+    <option value="55421">55421</option>
+    <option value="55418">55418</option>
+    <option value="55413">55413</option>
+    <option value="55411">55411</option>
+    <option value="55414">55414</option>
+    <option value="55405">55405</option>
+    <option value="55403">55403</option>
+    <option value="55402">55402</option>
+    <option value="55487">55487</option>
+    <option value="55488">55488</option>
+    <option value="55455">55455</option>
+    <option value="55454">55454</option>
+    <option value="55404">55404</option>
+    <option value="55406">55406</option>
+    <option value="55409">55409</option>
+    <option value="55410">55410</option>
+    <option value="55419">55419</option>
+    <option value="55423">55423</option>
+    <option value="55417">55417</option>
+</select>
+
+
+<br>
+<br>
+<div style="overflow:auto; margin:auto; text-align: center;">
+    
+    <iframe src="https://minneapolis411.files.wordpress.com/2013/09/zipcode.jpg" height="700px;" width="1800px;"></iframe> 
+
+</div>
+
+
+</body>
+
+<script>
+    $(document).ready(function(){
+       
+        $("#zipCode").change(function(){
+            var val = $("#zipCode option:selected").val();
+            alert(val);
+        });
+    });
+</script>
+
 

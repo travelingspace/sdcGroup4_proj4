@@ -5,4 +5,5 @@ from .models import FireReport
 
 def home(request):
     incidents = FireReport.objects.all()
+    '''incident = FireReport.GetIncident()'''
     return render(request, 'home.html', { 'fire_incidents': incidents})
