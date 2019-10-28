@@ -26,4 +26,28 @@ class FireReport(models.Model):
         incident = allIncidents[0].json()
         print(allIncidents.json())
         return allIncidents.json()'''
+
+
+class neighborhood_cirme(models.Model):
+
+
+    url =' https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/NEIGHBORHOOD_CRIME_STATS/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json'
+
+    neighborhood = models.CharField(max_length=200)
+    number = models.IntegerField()
+    reportMonth = models.DateTimeField()
+    reportYear = models.DateTimeField()
+    urcDescription = models.CharField()
+
+    def __str__(self):
+        return f'{self.neighborhood}, on{self.reportMonth}, in {self.reportYear} this {self.urcDescription} Was reported by the Police.'
+
+
+    def crimeReport():
+
+        allCrimeReport = requests.get('https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/NEIGHBORHOOD_CRIME_STATS/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json')
+        crimes = allCrimeReport[0].json()
+        print(allCrimeReport.json())
+        return crimes
+
             
