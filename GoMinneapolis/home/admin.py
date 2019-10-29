@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FireReport
+from .models import LiquorSales
 
 # Register your models here.
-admin.site.register(FireReport)
+admin.site.register(LiquorSales)
