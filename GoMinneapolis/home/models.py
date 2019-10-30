@@ -25,27 +25,24 @@ class LiquorSales(models.Model):
             name = sto["attributes"]["licenseName"]
             address = sto["attributes"]["address"]
             saleType = sto["attributes"]["liquorType"]
-
-            new_entry = {name : {"address": address, "saleType": saleType}}
+            lat = sto["attributes"]["lat"]
+            lng = sto["attributes"]["long"]
+            
+            new_entry = {name : {"address": address, "saleType": saleType, "lat":lat, "lng":lng}}
             self.liquor_licenses.update(new_entry)
 
             cntr += 1 
                        
         return self.liquor_licenses
     
-    def lat_long_to_zip(self):
+    def lat_long_to_zip(self, lat, lng):
+       query_string_url = ("https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&facet=state&facet=timezone&facet=dst&facet=city&refine.state=MN&refine.city=Minneapolis&refine.latitude=" + str(lat) + "&refine.longitude=" + str(lng)) 
+       data = requests.get(query_string_url).json()
 
-       data = requests.get('https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&facet=state&facet=timezone&facet=dst&facet=city&refine.state=MN&refine.city=Minneapolis').json()
-
-       self.code_lu = []
+       zip_code = 00000       
        
-       for codes in data["records"]:
-           zip_code = codes["fields"]["zip"]
-           latti = codes["fields"]["latitude"]
-           longit = codes["fields"]["longitude"]
-
-           new_entry = {zip_code, latti, longit}
-           self.code_lu.append(new_entry)
-
-       return self.code_lu 
+       for i in data["records"]:
+           zip_code = i["fields"]["zip"]           
+           
+       return zip_code 
         

@@ -16,43 +16,57 @@ body{
 
 <h1>ZipCode {{ zip_code }}</h1>
 
-<table>
-<thead>
-    <tr style="text-align:left;">
-        <th>
-            Business/Establishment Name
-        </th>
-        <th>
-            Street Address
-        </th>
-        <th>
-            Liquor Sale Type
-        </th>
-    </tr>
-</thead>
-<tbody>
-    {% for key, values in liquorStos.items %}
-    <tr>
-        <td>
-            {{key}}
-        </td>
-        {% for key, vals in values.items %}
-            <td>
-                {{vals}}
-            </td>
-        {% endfor %}
-        </td>        
-    </tr>
-    {% endfor %}
-</tbody>
-
-</table>>
-
-<p>
-    Zips:
-    {{ zips }}
-</p>
-
+<h3 style="text-align: left !important;">Off Sale Liquor Businesses in Minneapolis</h3>
+<div style="height:500px; width: 45%; overflow-y:scroll; float:left;">
+    <table>
+            <thead>
+                <tr style="text-align:left;">
+                    <th>
+                        Business/Establishment Name
+                    </th>
+                    <th>
+                        Street Address
+                    </th>
+                    <th>
+                        Liquor Sale Type
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, values in liquorStos.items %}
+                <tr>
+                    <td>
+                        {{key}}
+                    </td>
+                    {% for key, vals in values.items %}
+                        
+                        {% if key == "lat" %}
+            
+                        <td hidden data-info={{vals}}>
+                            {{vals}}
+                        </td>
+                        {% elif key == "lng" %}
+                        
+                        <td hidden data-info={{vals}}>
+                                {{vals}}
+                        </td>
+            
+                        {% else %}  
+                        <td>
+                            {{vals}}
+                        </td>
+                        {% endif %} 
+            
+                    {% endfor %}
+                    </td>
+                    <td>
+                        <button onclick="getZip($(this).closest('tr'))">Get Zip Code</button>
+                    </td>        
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 
 <script>
@@ -63,6 +77,13 @@ body{
             alert(val);
         });
     });
+
+    function getZip(tr){
+
+        var lat = $(tr).find('td').eq([3]).data("info");
+        var lng = $(tr).find('td').eq([4]).data("info");
+
+    }
 </script>
 
 
