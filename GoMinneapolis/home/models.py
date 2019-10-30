@@ -29,4 +29,20 @@ class LiquorSales(models.Model):
             self.liquor_licenses.append(new_entry) 
                        
         return self.liquor_licenses
+    
+    def lat_long_to_zip(self):
+
+       data = requests.get('https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-zip-code-latitude-and-longitude&facet=state&facet=timezone&facet=dst&facet=city&refine.state=MN&refine.city=Minneapolis').json()
+
+       self.code_lu = []
+       
+       for codes in data["records"]:
+           zip_code = codes["fields"]["zip"]
+           latti = codes["fields"]["latitude"]
+           longit = codes["fields"]["longitude"]
+
+           new_entry = {zip_code, latti, longit}
+           self.code_lu.append(new_entry)
+
+       return self.code_lu 
         

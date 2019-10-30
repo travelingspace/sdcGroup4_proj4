@@ -11,5 +11,6 @@ def home(request):
 def main(request, zip_code):
     ls = LiquorSales()
     lsales = ls.getBusinesses()
-    context = { 'liquorStos': lsales, 'zip_code': zip_code }
+    zips = ls.lat_long_to_zip()
+    context = { 'liquorStos': lsales, 'zip_code': zip_code, 'zips': zips }
     return render(request, 'main.html', context)
