@@ -1,0 +1,40 @@
+<style>
+body{
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<body>
+    <button style="float:right">View Zipcodes Visited</button>
+    <br>
+    <h1>GoMinneapolis!</h1>
+<p>Software Development Capstone - Group 4 - Project 4</p>
+
+<p>
+    <h4>Select a zipcode:</h4>
+</p>
+
+{% for business in liquorStos %}
+
+    {{business}}
+
+{% endfor %}
+
+
+</body>
+
+<script>
+    $(document).ready(function(){
+       
+        $("#zipCode").change(function(){
+            var val = $("#zipCode option:selected").val();
+            alert(val);
+        });
+    });
+</script>
+
+
