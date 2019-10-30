@@ -59,8 +59,8 @@ body{
        
         $("#zipCode").change(function(){
             var val = $("#zipCode option:selected").val();
-            alert(val);
-            window.location.assign("/main");
+            var url = "/main/" + val;
+            window.location.assign(url);
         });
     });
 </script>
