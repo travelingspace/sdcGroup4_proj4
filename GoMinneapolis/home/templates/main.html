@@ -83,6 +83,13 @@ body{
         var lat = $(tr).find('td').eq([3]).data("info");
         var lng = $(tr).find('td').eq([4]).data("info");
 
+        $.ajax({
+        url: '/getZip/?lat=' + lat + '&lng=' + lng,
+        success: function (data) {
+            alert(data);
+        }
+      });
+
     }
 </script>
 
