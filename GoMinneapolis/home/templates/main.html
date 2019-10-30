@@ -16,11 +16,37 @@ body{
 
 <h1>ZipCode {{ zip_code }}</h1>
 
-{% for business in liquorStos %}
+<table>
+<thead>
+    <tr style="text-align:left;">
+        <th>
+            Business/Establishment Name
+        </th>
+        <th>
+            Street Address
+        </th>
+        <th>
+            Liquor Sale Type
+        </th>
+    </tr>
+</thead>
+<tbody>
+    {% for key, values in liquorStos.items %}
+    <tr>
+        <td>
+            {{key}}
+        </td>
+        {% for key, vals in values.items %}
+            <td>
+                {{vals}}
+            </td>
+        {% endfor %}
+        </td>        
+    </tr>
+    {% endfor %}
+</tbody>
 
-    {{business}}
-
-{% endfor %}
+</table>>
 
 <p>
     Zips:

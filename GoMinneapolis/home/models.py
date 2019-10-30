@@ -17,7 +17,8 @@ class LiquorSales(models.Model):
         
         data = requests.get('https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Off_Sale_Liquor/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json').json()
 
-        self.liquor_licenses = []
+        self.liquor_licenses = {}
+        cntr = 0
 
         for sto in data["features"]:
             
@@ -25,8 +26,10 @@ class LiquorSales(models.Model):
             address = sto["attributes"]["address"]
             saleType = sto["attributes"]["liquorType"]
 
-            new_entry = {name, address, saleType}
-            self.liquor_licenses.append(new_entry) 
+            new_entry = {name : {"address": address, "saleType": saleType}}
+            self.liquor_licenses.update(new_entry)
+
+            cntr += 1 
                        
         return self.liquor_licenses
     
