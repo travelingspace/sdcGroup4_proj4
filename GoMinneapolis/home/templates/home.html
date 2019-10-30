@@ -52,13 +52,6 @@ body{
 
 </div>
 
-{% for business in liquorStos %}
-
-    {{business}}
-
-{% endfor %}
-
-
 </body>
 
 <script>
@@ -67,6 +60,7 @@ body{
         $("#zipCode").change(function(){
             var val = $("#zipCode option:selected").val();
             alert(val);
+            window.location.assign("/main");
         });
     });
 </script>
