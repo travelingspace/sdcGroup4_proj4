@@ -46,3 +46,38 @@ class LiquorSales(models.Model):
            
        return zip_code 
         
+class yelpRestaurants(models.Model):
+    restaurantName = models.CharField(max_length=200)
+    restaurantRating = models.IntegerField
+    restaurantPricing = models.CharField(max_length=500)
+
+    def searchYelp(self, zip_code):
+        yelpList = []
+        YELP_API_KEY = 'f3n-U3oZBl9eE1_a6_PNLZjs0Phcgs0zQDdaVvuMYq8dBntIB1h5yU9b2-xqBb-FD_i3gPqWY0Mx-BkkITo-V8uQ2LQ5cTXyFAiGn57FuHeSmoMBJFDJ3HwGRumoXXYx'
+
+        yelp_url = 'https://api.yelp.com/v3/businesses/search'
+
+        headers = {'Authorization': 'Bearer ' + YELP_API_KEY}
+
+        params = {
+            'categories': 'restaurants',
+            'location': zip_code,
+            'radius': '1000',
+            'limit': 20,
+            'sort_by': 'rating'
+        }
+
+        response = requests.get(yelp_url, headers=headers, params=params).json()
+
+        restaurants = response['businesses']
+
+        for r in restaurants:
+            name = r['name']
+            rating = r['rating']
+            pricing = r['price']
+            location = r['location']
+            address = ','.join(location['display_address'])
+
+            yelpList.append(f'{name}, {rating}, {pricing}, {address}')
+        
+        return(yelpList)
