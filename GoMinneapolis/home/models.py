@@ -87,4 +87,43 @@ class ZipCode(models.Model):
     
     zipcode = models.CharField(max_length=20)
 
+
+
+
+class Neighborhood(models.Model):
+    neighborhood = models.CharField(max_length=200)
+    number = models.IntegerField()
+    reportMonth = models.DateField()
+    reportYear = models.DateField()
+    urcDescription = models.CharField()
+
+    def __str__(self):
+        return f'{self.neighborhood}, on{self.reportMonth}, in {self.reportYear} this {self.urcDescription} Was reported by the Police.'
+
+
+def getCrimeRate(self):
+
+        data = requests.get('https://opendata.arcgis.com/datasets/e251c3fe668243719001237d7ac74420_0.geojson').json()
+
+        self.neighbordhood_crime = {}
+
+        count = 0
+
+        for neigh in data ["features"]:
+
+             ob = neigh["attribues"]["OBJECTID"]
+             loc = neigh["attributes"]["neighborhood"]
+             desc = neigh["attributes"]["ucrDescription"]
+             num = neigh["attributes"]["number"]
+             repMonth = neigh["attributes"]["reportMonth"]
+             repYear = neigh["attributes"]["reportYear"]
+
+             new_neighborhood ={ob:{"ob": ob, "loc":loc,"desc":desc,"num":num,"repMonth":repMonth ,"repYear":repYear}}
+
+             self.neighbordhood_crime.update(new_neighborhood)
+
+             count += 1
+
+        return self.neighbordhood_crime
+
     

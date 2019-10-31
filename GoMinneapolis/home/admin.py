@@ -5,3 +5,4 @@ from .models import ZipCode
 # Register your models here.
 admin.site.register(LiquorSales)
 admin.site.register(ZipCode)
+admin.site.register(neighborhood_crime)
