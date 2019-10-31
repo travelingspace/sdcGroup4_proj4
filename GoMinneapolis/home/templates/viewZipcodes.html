@@ -1,0 +1,70 @@
+<style>
+body{
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<body>
+    <button style="float:right">View Zipcodes Visited</button>
+    <br>
+    <h1>GoMinneapolis!</h1>
+<p>Software Development Capstone - Group 4 - Project 4</p>
+
+<h1>ZipCode {{ zip_code }}</h1>
+<br />
+<button style="height:100px; font-size:2em; margin-bottom:50px;">Save Zip Code</button>
+<br />
+
+<table>
+    <thead>
+        <th> Zip Code</th>
+        <th> </th>
+    </thead>
+    <tbody>
+
+        {% for item in zipCodes %}
+            <tr>
+                <td>
+                    {{item}}
+                </td>
+                <td>
+                    <button>delete</button>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+</body>
+
+<script>
+    $(document).ready(function(){
+       
+        $("#zipCode").change(function(){
+            var val = $("#zipCode option:selected").val();
+            alert(val);
+        });
+    });
+
+    function getZip(tr){
+
+        var lat = $(tr).find('td').eq([3]).data("info");
+        var lng = $(tr).find('td').eq([4]).data("info");
+
+        $.ajax({
+        url: '/getZip/?lat=' + lat + '&lng=' + lng,
+        success: function (data) {
+            alert(data);
+        }
+      });
+
+    }
+</script>
+
+

@@ -4,6 +4,7 @@ from django.template import loader
 from .models import LiquorSales
 from django.http import JsonResponse
 from .models import yelpRestaurants
+from .models import ZipCode
 
 # Create your views here.
 
@@ -27,4 +28,7 @@ def getZipFromLatLong(request):
     ls = LiquorSales()
     zipcode = ls.lat_long_to_zip(latitude, longitude)
     return JsonResponse(zipcode)
+
+def getAllZips(request):
+    zp = ZipCode.
 
