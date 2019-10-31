@@ -9,14 +9,12 @@ body{
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <body>
-    <button style="float:right">View Zipcodes Visited</button>
+    
     <br>
     <h1>GoMinneapolis!</h1>
 <p>Software Development Capstone - Group 4 - Project 4</p>
 
-<h1>ZipCode {{ zip_code }}</h1>
-<br />
-<button style="height:100px; font-size:2em; margin-bottom:50px;">Save Zip Code</button>
+
 <br />
 
 <table>
@@ -26,10 +24,10 @@ body{
     </thead>
     <tbody>
 
-        {% for item in zipCodes %}
+        {% for item in all_zips %}
             <tr>
                 <td>
-                    {{item}}
+                    {{item.zipcode}}
                 </td>
                 <td>
                     <button>delete</button>

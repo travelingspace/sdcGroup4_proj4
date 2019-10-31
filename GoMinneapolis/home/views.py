@@ -30,5 +30,7 @@ def getZipFromLatLong(request):
     return JsonResponse(zipcode)
 
 def getAllZips(request):
-    zp = ZipCode.
+    
+    all_zips = ZipCode.objects.all()
+    return render(request, 'viewZipcodes.html', {"all_zips": all_zips})
 

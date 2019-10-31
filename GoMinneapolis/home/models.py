@@ -87,5 +87,4 @@ class ZipCode(models.Model):
     
     zipcode = models.CharField(max_length=20)
 
-    def save(self, zipcode):
-        zipcode.Create(zipcode)
+    
