@@ -143,7 +143,13 @@ function cacheZip(){
 
     var zip = $("#zip_code").html();
     
-    $.ajax({ type: "POST", url: '/addZip/' + zip, success: function () {window.location.assign('/cachedZips');}});
+    $.ajax({ 
+        type: "POST", 
+        url: '/addZip/' + zip, 
+        success: function () {
+            window.location.assign('/cachedZips');
+        }
+    });
 
 }
 
