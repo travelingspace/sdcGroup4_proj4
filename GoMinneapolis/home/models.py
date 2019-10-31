@@ -49,7 +49,7 @@ class LiquorSales(models.Model):
 class yelpRestaurants(models.Model):
     restaurantName = models.CharField(max_length=200)
     restaurantRating = models.IntegerField
-    restaurantPricing = models.CharField(max_length=500)
+    restaurantLocation = models.CharField(max_length=500)
 
     def searchYelp(self, zip_code):
         yelpList = []
