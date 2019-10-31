@@ -35,6 +35,7 @@ def getAllZips(request):
     return render(request, 'viewZipcodes.html', {"all_zips": all_zips})
 
 def addZip(request, zip_code):
-    zp = ZipCode(zip_code).save()
+    ZipCode(zip_code).save()
+    return 
     
 

@@ -145,7 +145,7 @@ function cacheZip(){
     
     $.ajax({ 
         type: "POST", 
-        url: '/addZip/' + zip, 
+        url: '/addZip/' + zip,
         success: function () {
             window.location.assign('/cachedZips');
         }
