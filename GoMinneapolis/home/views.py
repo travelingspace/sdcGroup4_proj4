@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import LiquorSales
 from django.http import JsonResponse
+from .models import yelpRestaurants
 
 # Create your views here.
 
@@ -12,7 +13,11 @@ def home(request):
 def main(request, zip_code):
     ls = LiquorSales()
     lsales = ls.getBusinesses()
-    context = { 'liquorStos': lsales, 'zip_code': zip_code }
+
+    yelp = yelpRestaurants()
+    data = yelp.searchYelp(zip_code)
+
+    context = { 'liquorStos': lsales, 'zip_code': zip_code, "yelpData": data }
     return render(request, 'main.html', context)
 
 def getZipFromLatLong(request):
@@ -22,3 +27,4 @@ def getZipFromLatLong(request):
     ls = LiquorSales()
     zipcode = ls.lat_long_to_zip(latitude, longitude)
     return JsonResponse(zipcode)
+

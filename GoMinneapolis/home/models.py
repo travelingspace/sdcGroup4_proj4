@@ -52,7 +52,7 @@ class yelpRestaurants(models.Model):
     restaurantLocation = models.CharField(max_length=500)
 
     def searchYelp(self, zip_code):
-        yelpList = []
+        yelpList = {}
         YELP_API_KEY = 'f3n-U3oZBl9eE1_a6_PNLZjs0Phcgs0zQDdaVvuMYq8dBntIB1h5yU9b2-xqBb-FD_i3gPqWY0Mx-BkkITo-V8uQ2LQ5cTXyFAiGn57FuHeSmoMBJFDJ3HwGRumoXXYx'
 
         yelp_url = 'https://api.yelp.com/v3/businesses/search'
@@ -77,6 +77,8 @@ class yelpRestaurants(models.Model):
             location = r['location']
             address = ','.join(location['display_address'])
 
-            yelpList.append(f'{name}, {rating}, {address}')
+            newEntry = {name: { "rating": rating, "address": address }}
+            
+            yelpList.update(newEntry)
         
         return(yelpList)

@@ -16,8 +16,8 @@ body{
 
 <h1>ZipCode {{ zip_code }}</h1>
 
-<h3 style="text-align: left !important;">Off Sale Liquor Businesses in Minneapolis</h3>
 <div style="height:500px; width: 45%; overflow-y:scroll; float:left;">
+    <h3 style="text-align: left !important;">Off Sale Liquor Businesses in Minneapolis</h3>
     <table>
             <thead>
                 <tr style="text-align:left;">
@@ -67,6 +67,43 @@ body{
             </tbody>
         </table>
     </div>
+
+    <div style="height:500px; width: 45%; overflow-y:scroll; float:left;">
+        <h3 style="text-align: left !important;">Restaurants in Minneapolis in Zip Code</h3>
+        <table>
+                <thead>
+                    <tr style="text-align:left;">
+                        <th>
+                            Restaurant
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, values in yelpData.items %}
+                    <tr>
+                        <td>
+                            {{key}}
+                        </td>
+                        {% for key, vals in values.items %}
+                            
+                            <td>
+                                {{vals}}
+                            </td>
+               
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
 </body>
 
 <script>
