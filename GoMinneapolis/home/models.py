@@ -74,10 +74,9 @@ class yelpRestaurants(models.Model):
         for r in restaurants:
             name = r['name']
             rating = r['rating']
-            pricing = r['price']
             location = r['location']
             address = ','.join(location['display_address'])
 
-            yelpList.append(f'{name}, {rating}, {pricing}, {address}')
+            yelpList.append(f'{name}, {rating}, {address}')
         
         return(yelpList)
