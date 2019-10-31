@@ -15,8 +15,11 @@ body{
 <p>Software Development Capstone - Group 4 - Project 4</p>
 
 <h1>ZipCode {{ zip_code }}</h1>
+
+<span id="zip_code" hidden>{{ zip_code }}</span>
+
 <br />
-<button style="height:100px; font-size:2em; margin-bottom:50px;">Save Zip Code</button>
+<button style="height:100px; font-size:2em; margin-bottom:50px;" onclick="cacheZip({{zip_code}})">Save Zip Code</button>
 <br />
 
 <div style="height:500px; width: 45%; overflow-y:scroll; float:left;">
@@ -134,6 +137,14 @@ body{
 
 function goToCache(){
     window.location.assign('/cachedZips');
+}
+
+function cacheZip(){
+
+    var zip = $("#zip_code").html();
+    
+    $.ajax({ type: "POST", url: '/addZip/' + zip, success: function () {window.location.assign('/cachedZips');}});
+
 }
 
 </script>
